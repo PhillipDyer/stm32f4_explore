@@ -1,0 +1,1 @@
+arm-none-eabi-gcc -c -O0 -mcpu=cortex-m4 -mthumb -Wall main.c -g -o main.o

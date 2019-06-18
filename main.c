@@ -2,7 +2,7 @@
 
 const static int test = 0xDEADBEEF;
 static char hello[] = "Hello World\n";
-static char * hello_ptr = (char *)0x2003000;
+static char * hello_ptr = (char *)0x20003000;
 
 int *counter;
 int *deadbeef;
@@ -26,10 +26,10 @@ int main()
   
   while(1)
   {
-	++*counter;
-	//asm("ADDS r0, r0, #1");
-	//asm("LDR r1, #" (test));
-	//asm("LDR r6, #" (test));
+	//++*counter;
+	asm("ADDS r0, r0, #1");
+	asm("LDR r1, =0xDEADBEEF");
+	asm("LDR r6, =0xDEADBEEF");
   }
   return 0;
 }
