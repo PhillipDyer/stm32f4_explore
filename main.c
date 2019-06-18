@@ -2,10 +2,10 @@
 
 const static int test = 0xDEADBEEF;
 static char hello[] = "Hello World\n";
-static char * hello_ptr = 0x2003000;
+static char * hello_ptr = (char *)0x2003000;
 
-register int *counter asm ("r10");
-register int *deadbeef asm ("r11");
+int *counter;
+int *deadbeef;
 
 int main()
 {

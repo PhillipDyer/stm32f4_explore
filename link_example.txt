@@ -1,1 +1,0 @@
-arm-none-eabi-gcc core.o -mcpu=cortex-m4 -mthumb -Wall --specs=nosys.specs -nostdlib -lgcc -T./memory_map.ld -o main.elf
