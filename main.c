@@ -1,30 +1,18 @@
 
 
-//const static int test = 0xDEADBEEF;
-//static char hello[] = "Hello World\n";
-//static char * hello_ptr = (char *)0x20003000;
-
-//int *counter;
-//int *deadbeef;
-
 int main()
 {
-  /*
-  *counter = 0;
-  *deadbeef = test;
+  
+  int counter = 0;
+  int * deadbeef = (int *)0x2003000;
+  int counter_address = (int)&counter;
 
-  //char * ptr = hello;
-
-  while(*ptr != 0)
-  {
-	*hello_ptr = *ptr;
-	++hello_ptr;
-	++ptr;
-  }
-
-  //Stick a null terminator on.
-  *hello_ptr = 0;
-  */
+	  
+  asm("LDR r2, %0"
+	  :
+	  : "m" (counter_address)
+	  );
+  
   while(1)
   {
 	//++*counter;
