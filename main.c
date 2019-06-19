@@ -1,18 +1,19 @@
 
 
-const static int test = 0xDEADBEEF;
-static char hello[] = "Hello World\n";
-static char * hello_ptr = (char *)0x20003000;
+//const static int test = 0xDEADBEEF;
+//static char hello[] = "Hello World\n";
+//static char * hello_ptr = (char *)0x20003000;
 
-int *counter;
-int *deadbeef;
+//int *counter;
+//int *deadbeef;
 
 int main()
 {
+  /*
   *counter = 0;
   *deadbeef = test;
 
-  char * ptr = hello;
+  //char * ptr = hello;
 
   while(*ptr != 0)
   {
@@ -23,7 +24,7 @@ int main()
 
   //Stick a null terminator on.
   *hello_ptr = 0;
-  
+  */
   while(1)
   {
 	//++*counter;

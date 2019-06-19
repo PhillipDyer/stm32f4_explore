@@ -33,12 +33,12 @@ reset_handler:
 
 	//Set some dummy values. When we see these values in our debugger,
 	//We'll know that our program is loaded on the chip and working
-	////LDR 	r7, =0xDEADBEEF
-	////MOVS	r0, #0
-	// main_loop:
+	LDR 	r7, =0xDEADBEEF
+	MOVS	r0, #0
+	//main_loop:
 	//// Add one to register r0.
 	//ADDS 	r0, r0, #1
-	////Loop back
+	//Loop back
 	//B		main_loop
 	BL		main
 .size reset_handler, .-reset_handler
