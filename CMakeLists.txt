@@ -28,7 +28,7 @@ set(MEMORY_MAP "memory_map.ld")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --specs=nosys.specs -nostdlib -mcpu=cortex-m4 -mthumb -g")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --specs=nosys.specs -nostdlib -mcpu=cortex-m4 -mthumb -g")
-set(CMAKE_EXE_LINKER_FLAGS " -T./${MEMORY_MAP} -nostdlib -lgcc")
+set(CMAKE_EXE_LINKER_FLAGS " -T./${MEMORY_MAP} -Xlinker -Map=memory.map -nostdlib -lgcc")
 
 set_property(SOURCE core.S PROPERTY LANGUAGE C)
 
