@@ -1,7 +1,7 @@
 /** Define the end of RAM and the limit of stack memory */
 /* (192K SRAM on the STM32F4 line, 192K */
 /* 1M of Flash 1024K */
-_estack = 0x20002000; /* Take the first 8K of RAM as Stack */
+_stack_size = 0x2000;
 
 MEMORY
 {
@@ -16,6 +16,13 @@ SECTIONS
 	*(.text)
 	} > FLASH
 
+	.stack : {
+	__stack_end = .;
+	. = . + _stack_size;
+	. = ALIGN(4);
+	__stack_start = .;
+	} > RAM
+	
 	.data : {
 		  *(.data)
 	} > RAM

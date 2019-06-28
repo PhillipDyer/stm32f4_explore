@@ -17,7 +17,7 @@
 
 .type vtable, %object
 vtable:
-	.word _estack
+	.word __stack_start
 	.word reset_handler
 .size vtable, .-vtable
 	
@@ -28,7 +28,7 @@ vtable:
 reset_handler:
 	//Set the stack pointer to the end of the stack.
 	//The '_estack' value is defined in our linker script
-	LDR 	r0, =_estack
+	LDR 	r0, =__stack_start
 	MOV		sp, r0
 
 	//Set some dummy values. When we see these values in our debugger,
