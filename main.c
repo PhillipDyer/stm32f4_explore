@@ -1,4 +1,4 @@
-
+/** \brief Adding newlib stuff */
 #include <unistd.h>
 #include "arm_m4_defs.h"
 
@@ -19,7 +19,7 @@ int main()
   int * gpio_speed = (int *)GPIOD_OSPEEDR;
   int * gpio_pupdr = (int *)GPIOD_PUPDR;
   int * gpio_odr = (int *)GPIOD_ODR;
-  
+
   asm("LDR r2, %0"
 	  :
 	  : "m" (counter_address)
@@ -27,19 +27,16 @@ int main()
 
   /** Let's see if we can set up the clock enable register */
   *rcc_register |= 0x8;  //enable gpio-d clock.
-  
   *gpio_moder = (*gpio_moder | 0x55000000 ) & 0x55FFFFFF;
-
   *gpio_otype &= 0xFFFF0FFF;
-
   *gpio_speed &= 0x00FFFFFF;
-
   *gpio_pupdr &= 0x00FFFFFF;
+
+  /** string test */
   
   while(1)
   {
-	//++*counter;
-	asm("ADDS r8, r8, #1");
+	++counter;
 	turn_on(gpio_odr);
 	delay(DELAY_INTERVAL);
 	turn_off(gpio_odr);

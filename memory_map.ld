@@ -27,7 +27,11 @@ SECTIONS
 		  *(.data)
 	} > RAM
 
+	__bss_start = .;
+	__bss_start__ = .;
 	.bss : {
 		 *(.bss)
 	} > RAM
+	__bss_end__ = .;
+	_bss_end__ = .;
 }

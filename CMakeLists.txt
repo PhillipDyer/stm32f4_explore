@@ -10,7 +10,10 @@ set(PCK_REVISION 0)
 
 set (CMAKE_C_FLAGS_INIT "-mcpu Cortex-M4 -mthumb")
 set (CMAKE_CXX_FLAGS_INIT "-mcpu Cortex-M4 -mthumb")
+
+#these added to fix the -rdynamic bug
 set (CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
+set (CMAKE_SHARED_LIBAARY_LINK_CXX_FLAGS "")
 
 #include (CMakeForceCompiler)
 
@@ -26,9 +29,12 @@ set(CMAKE_LINKER "arm-none-eabi-gcc")
 
 set(MEMORY_MAP "memory_map.ld")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --specs=nosys.specs -nostdlib -mcpu=cortex-m4 -mthumb -g")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --specs=nosys.specs -nostdlib -mcpu=cortex-m4 -mthumb -g")
-set(CMAKE_EXE_LINKER_FLAGS " -T./${MEMORY_MAP} -nostdlib -lgcc")
+set(NEWLIB_PATH "/usr/lib/arm-none-eabi/newlib/")
+set(NEWLIB_LIBRARIES "-lg -lm -lc")
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --specs=nosys.specs -mcpu=cortex-m4 -mthumb -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --specs=nosys.specs -mcpu=cortex-m4 -mthumb -g")
+set(CMAKE_EXE_LINKER_FLAGS " -T./${MEMORY_MAP} -nostdlib ${NEWLIB_LIBRARIES}")
 
 set_property(SOURCE core.S PROPERTY LANGUAGE C)
 
