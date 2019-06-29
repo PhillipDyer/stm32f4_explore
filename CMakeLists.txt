@@ -3,6 +3,11 @@ cmake_minimum_required (VERSION 3.0)
 set(ProjectName test)
 
 project (${ProjectName})
+
+add_subdirectory("cortex_core")
+
+set(ProjectLibs "cortex_core")
+
 #module verison
 set(PCK_MAJOR 1)
 set(PCK_MINOR 0)
@@ -38,11 +43,13 @@ set(CMAKE_EXE_LINKER_FLAGS " -T./${MEMORY_MAP} -nostartfiles ${NEWLIB_LIBRARIES}
 
 set_property(SOURCE core.S PROPERTY LANGUAGE C)
 
-list (APPEND project_sources
+list (APPEND ProjectSources
   core.S
   main.c
   )
 
 add_executable(
-  ${ProjectName} ${project_sources}
+  ${ProjectName} ${ProjectSources}
   )
+
+target_link_libraries(${ProjectName} ${ProjectLibs})

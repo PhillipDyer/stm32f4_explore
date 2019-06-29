@@ -1,0 +1,3 @@
+[submodule "cortex_core"]
+	path = cortex_core
+	url = ssh://home-pi:/home/phillip/Projects/cortex_core.git
