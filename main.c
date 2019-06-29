@@ -1,5 +1,6 @@
 /** \brief Adding newlib stuff */
 #include <unistd.h>
+#include <string.h>
 #include "arm_m4_defs.h"
 
 void turn_on(int * gp);
@@ -23,6 +24,17 @@ int main()
   asm("LDR r2, %0"
 	  :
 	  : "m" (counter_address)
+	  );
+
+  char * test = "Test";
+  char * str = "Test";
+  
+  int compare = strcmp(test, str);
+  int compare_addr = (int)&compare;
+	
+  asm("LDR r2, %0"
+	  :
+	  : "m" (compare_addr)
 	  );
 
   /** Let's see if we can set up the clock enable register */

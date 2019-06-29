@@ -34,7 +34,7 @@ set(NEWLIB_LIBRARIES "-lg -lm -lc")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --specs=nosys.specs -mcpu=cortex-m4 -mthumb -g")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --specs=nosys.specs -mcpu=cortex-m4 -mthumb -g")
-set(CMAKE_EXE_LINKER_FLAGS " -T./${MEMORY_MAP} -nostdlib ${NEWLIB_LIBRARIES}")
+set(CMAKE_EXE_LINKER_FLAGS " -T./${MEMORY_MAP} -nostartfiles ${NEWLIB_LIBRARIES}")
 
 set_property(SOURCE core.S PROPERTY LANGUAGE C)
 
