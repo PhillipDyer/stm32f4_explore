@@ -22,7 +22,8 @@ int main()
 
   char * test = "Test";
   char * str = "Test";
-  
+
+  /* 
   int compare = strcmp(test, str);
   int compare_addr = (int)&compare;
 	
@@ -30,7 +31,7 @@ int main()
 	  :
 	  : "m" (compare_addr)
 	  );
-
+  */
   while(1)
   {
 	++counter;
