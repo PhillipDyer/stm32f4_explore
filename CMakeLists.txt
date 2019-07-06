@@ -4,9 +4,9 @@ set(ProjectName test)
 
 project (${ProjectName})
 
-#add_subdirectory("cortex_core")
+add_subdirectory("cortex_core")
 
-#set(ProjectLibs "cortex_core")
+set(ProjectLibs "cortex_core")
 
 #module verison
 set(PCK_MAJOR 1)
@@ -46,11 +46,10 @@ set_property(SOURCE core.S PROPERTY LANGUAGE C)
 list (APPEND ProjectSources
   core.S
   main.c
-  cortex_core/src/f4_disc_leds_int.c
   )
 
 add_executable(
   ${ProjectName} ${ProjectSources}
   )
 
-#target_link_libraries(${ProjectName} ${ProjectLibs})
+target_link_libraries(${ProjectName} ${ProjectLibs})

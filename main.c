@@ -7,6 +7,8 @@
 
 void delay(const unsigned int i);
 
+f4_discovery_led next_led(f4_discovery_led led);
+
 int main()
 {
   
@@ -32,13 +34,17 @@ int main()
 	  : "m" (compare_addr)
 	  );
   */
+
+  f4_discovery_led the_led = Red;
   while(1)
   {
+	
 	++counter;
-	f4_disc_leds_turn_on(Red);
+	f4_disc_leds_turn_on(the_led);
 	delay(DELAY_INTERVAL);
-	f4_disc_leds_turn_off(Red);
+	f4_disc_leds_turn_off(the_led);
 	delay(DELAY_INTERVAL);
+	the_led = next_led(the_led);
 
   }
   return 0;
@@ -47,4 +53,25 @@ int main()
 void delay(const unsigned int i)
 {
   for(int x =0; x < i; ++x);  //Just loop to eat up time.
+}
+
+f4_discovery_led next_led(f4_discovery_led led)
+{
+  switch(led)
+	{
+	case Red:
+	  led = Blue;
+	  break;
+	case Blue:
+	  led = Green;
+	  break;
+	case Green:
+	  led = Orange;
+	  break;
+	case Orange:
+	  led = Red;
+	  break;
+	}
+
+  return led;
 }
