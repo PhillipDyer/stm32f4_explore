@@ -2,12 +2,15 @@
 #include <unistd.h>
 #include <string.h>
 #include "cortex_core/include/f4_disc_leds.h"
+#include "cortex_core/include/systick.h"
 
 #define DELAY_INTERVAL 0x186004
 
 void delay(const unsigned int i);
 
 f4_discovery_led next_led(f4_discovery_led led);
+
+void light_green_isr();
 
 int main()
 {
@@ -22,10 +25,11 @@ int main()
 	  : "m" (counter_address)
 	  );
 
+  /*
   char * test = "Test";
   char * str = "Test";
 
-  /* 
+  
   int compare = strcmp(test, str);
   int compare_addr = (int)&compare;
 	
@@ -34,7 +38,9 @@ int main()
 	  : "m" (compare_addr)
 	  );
   */
-
+  configureSysTick();
+  connectSysTickISR(&light_green_isr);
+  
   f4_discovery_led the_led = Red;
   while(1)
   {
@@ -63,10 +69,10 @@ f4_discovery_led next_led(f4_discovery_led led)
 	  led = Blue;
 	  break;
 	case Blue:
-	  led = Green;
+	  led = Orange; //Green;
 	  break;
-	case Green:
-	  led = Orange;
+	  //case Green:
+	  //led = Orange;
 	  break;
 	case Orange:
 	  led = Red;
@@ -74,4 +80,9 @@ f4_discovery_led next_led(f4_discovery_led led)
 	}
 
   return led;
+}
+
+void light_green_isr()
+{
+  f4_disc_leds_turn_on(Green);
 }
