@@ -38,8 +38,9 @@ int main()
 	  : "m" (compare_addr)
 	  );
   */
-  configureSysTick();
-  connectSysTickISR(&light_green_isr);
+
+  //configureSysTick();
+  //connectSysTickISR(&light_green_isr);
   
   f4_discovery_led the_led = Red;
   while(1)
@@ -69,10 +70,10 @@ f4_discovery_led next_led(f4_discovery_led led)
 	  led = Blue;
 	  break;
 	case Blue:
-	  led = Orange; //Green;
+	  led = Green;
 	  break;
-	  //case Green:
-	  //led = Orange;
+   case Green:
+	  led = Orange;
 	  break;
 	case Orange:
 	  led = Red;
