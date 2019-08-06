@@ -3,6 +3,7 @@
 #include <string.h>
 #include "cortex_core/include/f4_disc_leds.h"
 #include "cortex_core/include/systick.h"
+#include "cortex_core/include/interrupts.h"
 
 #define DELAY_INTERVAL 0x186004
 
@@ -39,9 +40,10 @@ int main()
 	  );
   */
 
+  //disable_all_interrupts();
   //configureSysTick();
   //connectSysTickISR(&light_green_isr);
-  
+  //enable_all_interrupts(); 
   f4_discovery_led the_led = Red;
   while(1)
   {
