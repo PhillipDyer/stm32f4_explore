@@ -40,10 +40,10 @@ int main()
 	  );
   */
 
-  //disable_all_interrupts();
-  //configureSysTick();
-  //connectSysTickISR(&light_green_isr);
-  //enable_all_interrupts(); 
+  disable_all_interrupts();
+  configureSysTick();
+  connectSysTickISR(&light_green_isr);
+  enable_all_interrupts(); 
   f4_discovery_led the_led = Red;
   while(1)
   {
@@ -72,7 +72,8 @@ f4_discovery_led next_led(f4_discovery_led led)
 	  led = Blue;
 	  break;
 	case Blue:
-	  led = Green;
+	  //	  led = Green;
+	  led = Orange;
 	  break;
    case Green:
 	  led = Orange;
