@@ -44,8 +44,9 @@ set(CMAKE_EXE_LINKER_FLAGS " -T./${MEMORY_MAP} -nostdlib ${NEWLIB_LIBRARIES}")
 set_property(SOURCE core.S PROPERTY LANGUAGE C)
 
 list (APPEND ProjectSources
-  core.S
+#  core.S
   main.c
+  interrupt_handlers.c
   )
 
 add_executable(
