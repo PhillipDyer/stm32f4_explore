@@ -2,7 +2,6 @@
 /* (192K SRAM on the STM32F4 line, 192K */
 /* 1M of Flash 1024K */
 _stack_size = 0x2000;
-_vector_size = 0x100;
 
 MEMORY
 {
@@ -16,13 +15,7 @@ SECTIONS
 	{
 	*(.text)
 	} > FLASH
-	
-	.vectors :
-	{
-	*(.vectors)
-	. = . + _vector_size;
-	 } > RAM
-	
+		
 	.stack : {
 	__stack_end = .;
 	. = . + _stack_size;
