@@ -40,6 +40,7 @@ int main()
 	  );
   */
 
+  initialize_interrupt_table();
   disable_all_interrupts();
   configureSysTick();
   connectSysTickISR(&light_green_isr);
