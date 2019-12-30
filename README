@@ -8,6 +8,20 @@ I'm relying on st-util to start a communication path to the board.
 
 gdb-multiarch to debug and load the executable on the board.
 
+basically you build with make.
+
+in a seperate terminal run
+'st-util'
+to connect to the board
+
+then on the main terminal run
+
+'gdb-multiarch test'
+'connect remote :4242'
+'load'
+
+and that will load the new image on the discovery device to play with. Breakpoints, stack traces. You've got it.
+
 12/28/2019
 
 Already failed, it's been awhile since I put this down. I've got an e-Ink display that can be talked to via SPI. I don't have it wired up correctly yet and it's some cheapy off Amazon with no documentation and some examples relying on a 3rd party library. So I'll have to do some basic experimentation on that.
@@ -17,3 +31,7 @@ Plus I have no idea how the F4 works with a SPI Interface.
 Last think I was trying to do before I put this down was get the systick event firing to put in a rudimentary scheduling system.
 
 or maybe not since that's the most I've thought about it.
+
+12/29/2019
+
+Not sure how I missed this. But the ISR is actually working. That's Awesome! So I have SysTick working now. I need to see what I can do with some of the other ISRs that are available.
